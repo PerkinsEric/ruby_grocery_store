@@ -92,36 +92,22 @@ end
 # Add Items
 def add_items
   puts "What would you like to purchase?"
-
+  num = 0
   @inventory.each do |inventory|
-    puts "#{inventory[:item]}    #{inventory[:price]}"
+    puts "#{num += 1}) #{inventory[:item]}    #{inventory[:price]}"
     
     
   end
-  puts 'Type "Done" to return to the main menu'
+  puts "0) Done"
   
-  while item = gets.strip
-    if item == 'Apples'
-      @cart << @inventory[0]
+  #item selection code
+  while item = gets.strip.to_i
+    if item >= 1 && item <=@teic
+      @cart << @inventory[item-1]
       puts "What else would you like?"
-    elsif item == 'Bread'
-      @cart << @inventory[1]
-      puts "What else would you like?"
-    elsif item == 'Milk'
-      @cart << @inventory[2]
-      puts "What else would you like?"
-    elsif item == 'Grape Juice'
-      @cart << @inventory[3]
-      puts "What else would you like?"
-    elsif item == 'Eggs'
-      @cart << @inventory[4]
-      puts "What else would you like?"
-    elsif item == 'Cheese'
-      @cart << @inventory[5]
-      puts "What else would you like?"
-    elsif item == 'Done'
+    elsif item == 0
       break
-    else
+    elsif item >=@teic
       puts 'Error: Please provide a listed item.'
     
     end
