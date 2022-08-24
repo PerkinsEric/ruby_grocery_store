@@ -1,6 +1,3 @@
-require 'pry'
-# Display a menu in the console for the user to interact with.
-  #build a starter menu
 # Create a default array of hashes that represent items at a grocery store.
   # menu listing items for sale
   # display prices for items
@@ -92,9 +89,8 @@ end
 # Add Items
 def add_items
   puts "What would you like to purchase?"
-  num = 0
-  @inventory.each do |inventory|
-    puts "#{num += 1}) #{inventory[:item]}    #{inventory[:price]}"
+  @inventory.each_with_index do |inventory, index|
+    puts "#{index + 1}) #{inventory[:item]}    #{inventory[:price]}"
     
     
   end
@@ -103,7 +99,7 @@ def add_items
   #item selection code
   while item = gets.strip.to_i
     if item >= 1 && item <=@teic
-      @cart << @inventory[item-1]
+      @cart << @inventory[item - 1]
       puts "What else would you like?"
     elsif item == 0
       break
